@@ -17,6 +17,9 @@ videos/
 screenshots/
 trace.zip
 
+# Playwright reports
+playwright-report/
+
 # Environment files
 .env
 .env.*.local
