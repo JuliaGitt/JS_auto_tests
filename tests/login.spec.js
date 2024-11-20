@@ -1,3 +1,4 @@
+const credentials = require('../credentials.json');
 const { test, expect } = require('@playwright/test');
 
 test.beforeEach(async ({ page }) => {
@@ -7,8 +8,8 @@ test.beforeEach(async ({ page }) => {
 test('login', async ({ page }) => {
 
     //login
-    await page.getByPlaceholder('Username').fill('standard_user');
-    await page.getByPlaceholder('Password').fill('secret_sauce');
+    await page.getByPlaceholder('Username').fill(credentials.standard_user.username);
+    await page.getByPlaceholder('Password').fill(credentials.standard_user.password);
     await page.getByTestId('login-button').click();
 
     //Products (1) title is displayed
@@ -23,5 +24,4 @@ test('login', async ({ page }) => {
     const listOfitems = page.getByTestId('inventory-list').getByTestId('inventory-item');
     const itemCount = await listOfitems.count();
     expect(itemCount).toBeGreaterThan(1);
-}
-);
+});

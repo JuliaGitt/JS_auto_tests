@@ -1,3 +1,4 @@
+const credentials = require('../credentials.json');
 const { test, expect } = require('@playwright/test');
 
 test.beforeEach(async ({ page }) => {
@@ -7,8 +8,8 @@ test.beforeEach(async ({ page }) => {
 test('add product to cart', async ({ page }) => {
 
 // Perform login using "standard_user"
-    await page.getByPlaceholder('Username').fill('standard_user');
-    await page.getByPlaceholder('Password').fill('secret_sauce');
+    await page.getByPlaceholder('Username').fill(credentials.standard_user.username);
+    await page.getByPlaceholder('Password').fill(credentials.standard_user.password);
     await page.getByTestId('login-button').click();
 
 //Add the first product to the cart by clicking Add to Cart button
